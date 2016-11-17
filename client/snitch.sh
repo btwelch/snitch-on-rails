@@ -9,8 +9,8 @@ server_order=100; # Order of server within column
 ##
 ## Go to the repo you want to report status on, and parse + post its status to the server
 ##
-cd /opt/rest-api;
-branch_label="Rest API"
+cd /opt/yourrepo1;
+branch_label="Repo1"
 branch_name=$(git branch | awk '/\*/ { print $2; }');
 branch_status=$(git status);
 branch_log=""; #$(git log);
@@ -20,19 +20,8 @@ curl --verbose --data "server_name=$server_name&server_group=$server_group&serve
 ##
 ## Go to the repo you want to report status on, and parse + post its status to the server
 ##
-cd /opt/bravestorm;
-branch_label="Bravestorm"
-branch_name=$(git branch | awk '/\*/ { print $2; }');
-branch_status=$(git status);
-branch_log=""; #$(git log);
-
-curl --verbose --data "server_name=$server_name&server_group=$server_group&server_order=$server_order&branch_label=$branch_label&branch_name=$branch_name&branch_status=$branch_status&branch_log=$branch_log" $host:$port/servers/snitch
-
-##
-## Go to the repo you want to report status on, and parse + post its status to the server
-##
-cd /opt/snitch/snitch;
-branch_label="Snitch"
+cd /opt/yourrepo2;
+branch_label="Repo2"
 branch_name=$(git branch | awk '/\*/ { print $2; }');
 branch_status=$(git status);
 branch_log=""; #$(git log);
