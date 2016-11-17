@@ -11,12 +11,13 @@ Snitch is a dev-server git status reporting tool. It was designed to track the c
 Snitch-on-Rails is a Rails-based app, and the easiest way to get a Rails app up and running is to deploy it to Heroku. Here's how to do it.
 
 1. Create a heroku account (http://www.heroku.com)
-2. $ git clone https://github.com/btwelch/snitch-on-rails.git
-3. $ cd snitch-on-rails
-4. $ heroku create
-5. Copy the Heroku server name you are given
-6. $ git push heroku master
-7. $ heroku run rake db:migrate
+2. Install the Heroku command line on your local machine (https://devcenter.heroku.com/articles/heroku-command-line)
+3. $ git clone https://github.com/btwelch/snitch-on-rails.git
+4. $ cd snitch-on-rails
+5. $ heroku create
+6. Copy the Heroku server name you are given
+7. $ git push heroku master
+8. $ heroku run rake db:migrate
 
 Now you should be up and running with a Snitch server on Heroku. Nicely done!
 
@@ -31,7 +32,7 @@ In order for Snitch to know the status of your repos, each dev server must be se
 2. yourserver$ cd opt/
 3. yourserver$ vim snitch.sh
 4. Insert the contents of this project's file client/snitch.sh into the vim editor
-5. Change "host" of the snitch.sh script to be the Heroku server name you copied from step #5 in "Setup on Heroku"
+5. Change "host" of the snitch.sh script to be the Heroku server name you copied from step #6 in "Setup on Heroku"
 6. Setup a curl request for every repo on your server (see Setup of Repo Reporting for details)
 7. Save the snitch.sh script
 8. yourserver$ chmod 777 snitch.sh
