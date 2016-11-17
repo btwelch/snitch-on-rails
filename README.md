@@ -36,6 +36,11 @@ In order for Snitch to know the status of your repos, each dev server must be se
 6. Setup a curl request for every repo on your server (see Setup of Repo Reporting for details)
 7. Save the snitch.sh script
 8. yourserver$ chmod 777 snitch.sh
+
+Now you should have a shell script that is run every 5 minutes that reports the repo statuses to the Snitch server. You can also force an instant report to Snitch server by running ./snitch.sh command on your dev server.
+
+>Check it out at: {your Heroku server name}/server
+
 9. yourserver$ crontab -e 
 10. Insert */5 * * * * /opt/snitch.sh to the crontab file.
 11. Save the crontab file and exit.

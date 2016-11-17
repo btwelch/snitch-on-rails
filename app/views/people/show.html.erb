@@ -1,4 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<div>Name: <%= @person.name %></div>
+<div>Email: <%= @person.email %></div>
+
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>
