@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  repo_name: MyString
+  current_branch_name: MyString
+  current_branch_status: MyText
+
+two:
+  repo_name: MyString
+  current_branch_name: MyString
+  current_branch_status: MyText

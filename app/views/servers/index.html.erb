@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Snitch</title>
+    <link rel="stylesheet" href="/assets/style.css">
+    <script>
+      setTimeout(function() {
+          window.location.reload(1);
+      }, 30000);
+    </script>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td><img src="/SnitchLogo.png" style="height: 120px;"></td>
+        <td>
+          &nbsp;<p style="font-size: 22px" class="heading">Dev server git/usage status</p>
+        </td>
+      </tr>
+    </table>
+    <table cellspacing="40px" style="width: 100%;">
+      <tr>
+        <% @server_groups.each do |server_group_key, value| %>
+          <td style="width: 50%;">  
+            <% value.each do |server| %>
+              <h2>
+                <% if server.person_id %>
+                  <%= image_tag server.person.gravatar_url, class: 'square' %>
+                <% else %>
+                  <%= image_tag "https://www.us.aspjj.com/sites/aspjj.com.us/files/default_images/No_available_image_3.jpg", class: 'square' %>
+                <% end %>
+                <%= link_to "X", url_for(action: :delete_server, id: server.id), method: :delete %>
+                <%= server.server_name %>
+
+                <%= select_tag( "person_id", options_from_collection_for_select(Person.all, :id, :name, server.person_id), :prompt => "Unclaimed",
+                      data: {
+                        remote: true,
+                        method: :post,
+                        url: url_for( action: :assign_person, id: server.id)
+                      }
+                ) %>
+              </h2>
+              <table>
+                <% server.repos.each do |repo| %>
+                  <tr>
+                    <td class="head">
+                      <%= link_to "X", url_for(action: :delete_repo, id: repo.id), method: :delete %>
+                      <%= repo.repo_name %>:
+                    </td>
+                    <td class="trunc">
+                      <%= repo.current_branch_name %>
+                      <a href='Javascript:void(0)' onclick="showRepoStatus(<%= repo.id %>);">
+                        >
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan=1 style='display: none;' id='repo_status_<%= repo.id %>'>
+                      <%= simple_format(repo.current_branch_status) %>
+                    </td>
+                  </tr>
+                <% end %>
+              </table>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    </table>
+  </body>
+
+  <script type='text/javascript'>
+    function showRepoStatus(repo){
+      document.getElementById('repo_status_' + repo).style='display: block;';
+    }
+  </script>
+</html>
