@@ -1,6 +1,6 @@
 # Snitch Host / Port
 host="localhost"; # The hostname where your Snitch server lives
-port=3000; # The port where your snitch server is listening (80 is nice if Snitch is the only thing running)
+port=80; # The port where your snitch server is listening (80 is nice if Snitch is the only thing running)
 
 server_name="devservername"; # Unique name of server for which you are displaying status
 server_group=1;   # Columnar grouping/display of servers
